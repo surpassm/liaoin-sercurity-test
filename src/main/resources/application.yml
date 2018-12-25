@@ -1,0 +1,106 @@
+server:
+  port: 8989
+  #session超时时间，最低为1分钟
+  session:
+    timeout: 1800
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/security-test?useUnicode=yes&characterEncoding=UTF-8&useSSL=false
+    username: root
+    password: 123456
+  #集群会话管理
+  session:
+    store-type: none
+  jpa:
+    properties:
+      hibernate:
+#      格式化sql语句
+        format_sql: true
+#        打印sql
+    show-sql: true
+#    自动生成表/修改数据表
+    generate-ddl: true
+
+#security:
+#  basic:
+#    enabled: false
+
+liaoin:
+  security: 
+#浏览器环境配置项 BrowserProperties
+    browser:
+      #默认注册页面
+      signUpUrl: /demo-signUp.html
+      #默认登录页面
+      loginPage: /demo-signIn.html
+      #默认退出页面
+      signOutUrl:
+      #登陆返回方式
+      loginType: REDIRECT
+      #记住我的过期时间（单位:秒）
+      rememberMeSeconds:
+      session:
+        #同一个用户在系统中的最大session数，默认1
+        maximumSessions: 1
+        #达到最大session时是否阻止新的登录请求，默认为false，不阻止，新的登录会将老的登录失效掉
+        maxSessionsPreventsLogin: false
+        #session失效时跳转的地址
+        sessionInvalidUrl: /session/invalid
+#图片验证码配置项 ValidateCodeProperties
+    code:
+      #图片验证码属性配置
+      image:
+        #宽度
+        length: 6
+        #高度
+        width: 100
+
+        #短信验证码属性配置
+        #那些拦截需要验证码
+        url: /user/*
+        #过期时间
+        expireIn:
+        #长度
+        length:
+#三方登陆相关配置项 SocialProperties
+    social:
+      #过滤链需要过滤器验证的url地址
+      filterProcessesUrl: /auth
+      #QQ登陆配置属性
+      qq:
+        #服务商标识
+        providerId: qq
+        app-id:
+        app-secret:
+      #微信登陆配置属性
+      weixin:
+        #第三方id，用来决定发起第三方登录的url，默认是 weixin。
+        providerId: weixin
+        app-id:
+        app-secret:
+#认证服务器注册的第三方应用配置项  OAuth2Properties
+    oauth2:
+      #使用jwt时为token签名的密匙
+      jwtSigningKey:
+      #具体应用的密钥和密码，这里是数组
+      clients[0]:
+        clientId:
+        clientIdSecret:
+        accessTokenValiditySeconds:
+      clients[1]:
+        clientId:
+        clientIdSecret:
+        accessTokenValiditySeconds:
+
+
+
+
+
+
+
+
+
+
+
